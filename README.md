@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# Earthquake Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Interactive, client-only map that visualizes the last 24 hours of earthquakes from the USGS GeoJSON feed using React-Leaflet.
 
-## Available Scripts
+Data source: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
 
-In the project directory, you can run:
+## Live Demo
 
-### `npm start`
+Live: https://your-live-demo-url.example
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+(Replace the link above after deployment.)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Stack
+- React + TypeScript (Create React App)
+- React-Leaflet + Leaflet
+- Axios
+- Tailwind CSS
 
-### `npm test`
+## Requirements
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js 18+ and npm 10+ are recommended.
 
-### `npm run build`
+## Clone and run locally
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# 1) Clone the repository
+git clone https://github.com/your-github-username/earthquake-visualizer.git
+cd earthquake-visualizer
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# 2) Install dependencies
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 3) Start the dev server (http://localhost:3000)
+npm start
 
-### `npm run eject`
+# 4) Run tests (optional)
+npm test
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# 5) Build for production (optional)
+npm run build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Features
+- Map with circle markers sized and colored by magnitude
+- Popups with magnitude, place, depth, local time, and USGS link
+- Filters: min magnitude, time window (1h/6h/12h/24h)
+- In-memory caching with TTL (default 5 minutes)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## How to use
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Pan/zoom the map to explore. Click any marker to view details.
+- Desktop: use the right sidebar to adjust filters (min magnitude, time window, cluster toggle, color mode) and view the summary and legend.
+- Mobile/Tablet: tap the “Filters” button (bottom-right) to open a bottom popup (60% height) with filters, summary, and legend. Tap outside or press Esc to close.
+- Use the Refresh button in the header to fetch the latest data from USGS (bypasses cache).
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Any static host will work (Netlify, Vercel, GitHub Pages). Example:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Netlify
+	- Build command: `npm run build`
+	- Publish directory: `build/`
+- GitHub Pages
+	- Build locally: `npm run build`
+	- Push the `build/` folder contents to a `gh-pages` branch (or use a GitHub Action)
+
+## Notes
+- No backend; the app fetches USGS directly from the browser
+- Leaflet styles are imported in `src/index.css`
+- If you run into CORS or network issues, try again later—availability relies on USGS.

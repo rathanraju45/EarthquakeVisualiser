@@ -1,3 +1,28 @@
+@import 'leaflet/dist/leaflet.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Responsive helpers */
+:root {
+  --safe-top: env(safe-area-inset-top);
+  --safe-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-screen {
+  min-height: 100svh;
+  padding-bottom: var(--safe-bottom);
+}
+
+.backdrop {
+  background: rgba(0,0,0,0.4);
+}
+
+/* Ensure Leaflet controls respect safe area at the bottom on mobile */
+.leaflet-bottom .leaflet-control {
+  margin-bottom: calc(10px + env(safe-area-inset-bottom));
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
