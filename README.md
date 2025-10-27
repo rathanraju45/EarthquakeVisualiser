@@ -6,9 +6,7 @@ Data source: https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.g
 
 ## Live Demo
 
-Live: https://your-live-demo-url.example
-
-(Replace the link above after deployment.)
+🌍 **Live:** https://earthquakevisualiser.netlify.app
 
 ## Stack
 - React + TypeScript (Create React App)
@@ -24,7 +22,7 @@ Live: https://your-live-demo-url.example
 
 ```bash
 # 1) Clone the repository
-git clone https://github.com/your-github-username/earthquake-visualizer.git
+git clone https://github.com/rathanraju45/EarthquakeVisualiser.git
 cd earthquake-visualizer
 
 # 2) Install dependencies
